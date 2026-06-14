@@ -11,7 +11,7 @@ Local-first manufacturing quote assistant powered by **LM Studio**. Analyzes eng
 ## Setup (Windows)
 
 ```powershell
-cd "C:\Users\Admin\Desktop\Jalp Project"
+cd "C:\Users\your name\Desktop\your file"
 python -m venv venv
 .\venv\Scripts\activate
 pip install -r requirements.txt
