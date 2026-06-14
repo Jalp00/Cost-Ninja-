@@ -1,65 +1,32 @@
 # Cost Ninja - AI Quote Pilot V3
 
-Local-first manufacturing quote assistant powered by **LM Studio**. Analyzes engineering drawings for cost estimates and compares supplier quotes against historical data.
+## Executive Summary
+Cost Ninja V3 is a proprietary, on-premise project control and estimation tool designed specifically for manufacturing operations. Built to operate in highly regulated environments requiring strict data sovereignty, the system processes technical engineering drawings to generate accurate manufacturing cost estimates. It operates entirely off-grid utilizing local hardware, ensuring zero data leakage of proprietary intellectual property.
 
-## Requirements
+## Core Capabilities
+* **AI-Powered Drawing Analysis:** Extracts Title Block data, tolerances, surface finishes, and feature inventories directly from PDF or image-based engineering drawings.
+* **Deterministic Cost Grounding:** Cross-verifies AI extractions against a hard-coded, rule-based estimation engine to calculate precise labor, material, and setup costs.
+* **Automated Quote Comparison:** Ingests supplier quote PDFs, utilizes OCR and fuzzy-matching, and compares quoted prices against historical purchase order data to identify savings opportunities.
+* **Air-Gapped Execution:** Integrates directly with LM Studio to run vision and text Large Language Models (LLMs) locally.
 
-- Python 3.10+
-- [LM Studio](https://lmstudio.ai/) with any loaded model (Gemma, Qwen, LLaVA, etc.)
-- Optional: [Tesseract OCR](https://github.com/UB-Mannheim/tesseract/wiki) for text-only models
+## System Architecture & Modules
+* `main.py`: The application entry point and asynchronous GUI orchestrator.
+* `lm_studio_client.py`: The integration layer for local LLM processing. Features auto-model detection and multi-pass OCR fallbacks.
+* `config_helpers.py`: The deterministic calculation engine. Handles routing, raw material volume math, and complexity tiering.
+* `quote_comparison.py`: Procurement analysis module utilizing Levenshtein distance and Jaro-Winkler algorithms to match unstructured quote data to internal ERP/Excel history.
+* `config.json`: The central database for machine capacities, hourly labor rates, material densities, and markup percentages.
 
-## Setup (Windows)
+## Hardware & Deployment Requirements
+Optimized for local workstation hardware with dedicated VRAM (e.g., NVIDIA RTX 3050 Ti or higher) to ensure complete local processing. 
 
-```powershell
-cd "C:\Users\your name\Desktop\your file"
-python -m venv venv
-.\venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-### LM Studio
-
-1. Open LM Studio and load **any** GGUF model
-2. Go to **Developer** tab → **Start server** (default port `1234`)
-3. The app auto-detects loaded models; optional hints in `config.json` → `lm_studio`
-
-### Smoke test
-
-```powershell
-python api_test.py
-```
-
-### Run the app
-
-```powershell
-python main.py
-```
-
-Or use the legacy entry point: `python maiin.py`
-
-## Features
-
-- **Drawing analysis** — load PDF/image, stream AI cost estimate from local LLM
-- **Quote comparison** — OCR + fuzzy match supplier quotes vs Excel history
-- **Status bar** — LM Studio connection, active model, OCR mode
-- **Settings** — test connection, change base URL
-- **Export** — TXT or structured JSON reports
-
-## Configuration
-
-Edit [config.json](config.json):
-
-- `labor_rate_per_hour`, material prices, machining rules
-- `lm_studio.base_url` — default `http://localhost:1234/v1`
-- `lm_studio.text_model` / `vision_model` — leave empty for auto-detect
-
-## Project structure
-
-| File | Purpose |
-|------|---------|
-| `main.py` | Application entry point |
-| `lm_studio_client.py` | LM Studio API client |
-| `config_helpers.py` | Config loading and cost logic |
-| `quote_comparison.py` | OCR and fuzzy matching |
-| `ui_widgets.py` | CustomTkinter theme widgets |
-| `api_test.py` | LM Studio connectivity test |
+### Installation
+1. Ensure Python 3.10+ is installed.
+2. Clone the repository to the local workstation.
+3. Initialize the virtual environment and install dependencies:
+   ```powershell
+   python -m venv venv
+   .\venv\Scripts\activate
+   pip install -r requirements.txt
+   
+4.Configure LM Studio: Load the required models, navigate to the Developer tab, and start the local server.
+5.Launch the application: python main.py
