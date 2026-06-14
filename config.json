@@ -1,1 +1,109 @@
-Nahh 
+
+{
+  "labor_rate_per_hour": 35.0,
+  "supplier_markup_percentage": 25.0,
+  "extrusion_material_price_per_kg": 4.1,
+  "material_data": {
+    "AL6061": { "price_per_kg": 8.0, "density_g_cm3": 2.8 },
+    "ALUMINUM": { "price_per_kg": 8.0, "density_g_cm3": 2.8 },
+    "AL7050": { "price_per_kg": 10.0, "density_g_cm3": 2.83 },
+    "AL7075": { "price_per_kg": 10.0, "density_g_cm3": 2.83 },
+    "AL2024": { "price_per_kg": 14.0, "density_g_cm3": 2.83 },
+    "AL2124": { "price_per_kg": 20.0, "density_g_cm3": 2.83 },
+    "FMS-3004-T7351": { "price_per_kg": 80.0, "density_g_cm3": 2.83 },
+    "FMS-3002": { "price_per_kg": 8.0, "density_g_cm3": 8.0 },
+    "STEEL": { "price_per_kg": 3.0, "density_g_cm3": 7.8 },
+    "STEEL304": { "price_per_kg": 15.0, "density_g_cm3": 8.0 },
+    "SSTEEL303": { "price_per_kg": 30.0, "density_g_cm3": 8.0 },
+    "SSTEEL304": { "price_per_kg": 30.0, "density_g_cm3": 8.0 },
+    "AISI304L": { "price_per_kg": 80.0, "density_g_cm3": 7.8 },
+    "AISI321": { "price_per_kg": 40.0, "density_g_cm3": 7.8 },
+    "AISI420": { "price_per_kg": 18.0, "density_g_cm3": 7.75 },
+    "SAE1020": { "price_per_kg": 8.0, "density_g_cm3": 7.8 },
+    "SAE4130": { "price_per_kg": 16.0, "density_g_cm3": 7.8 },
+    "SAE4140": { "price_per_kg": 12.0, "density_g_cm3": 7.8 },
+    "SAE4340": { "price_per_kg": 12.0, "density_g_cm3": 7.8 },
+    "D6AC": { "price_per_kg": 150.0, "density_g_cm3": 7.8 },
+    "A286": { "price_per_kg": 83.0, "density_g_cm3": 7.9 },
+    "PH13-8MO": { "price_per_kg": 85.0, "density_g_cm3": 7.8 },
+    "PH15-5": { "price_per_kg": 45.0, "density_g_cm3": 7.8 },
+    "PH17-4": { "price_per_kg": 35.0, "density_g_cm3": 7.8 },
+    "PH17-7": { "price_per_kg": 220.0, "density_g_cm3": 7.8 },
+    "TITANIUM": { "price_per_kg": 200.0, "density_g_cm3": 4.43 },
+    "INCONEL": { "price_per_kg": 80.0, "density_g_cm3": 8.23 },
+    "TUNGSTEN": { "price_per_kg": 50.0, "density_g_cm3": 8.5 },
+    "COPPER": { "price_per_kg": 250.0, "density_g_cm3": 8.96 },
+    "CDA-110": { "price_per_kg": 260.0, "density_g_cm3": 8.96 },
+    "CDA630": { "price_per_kg": 270.0, "density_g_cm3": 8.96 },
+    "DELRIN": { "price_per_kg": 70.0, "density_g_cm3": 1.41 },
+    "DELRIN500": { "price_per_kg": 70.0, "density_g_cm3": 1.3 },
+    "ANTISTATICDELRIN": { "price_per_kg": 70.0, "density_g_cm3": 1.3 },
+    "POMC": { "price_per_kg": 70.0, "density_g_cm3": 1.3 },
+    "PEEK": { "price_per_kg": 290.0, "density_g_cm3": 1.32 },
+    "TEFLON": { "price_per_kg": 170.0, "density_g_cm3": 2.2 }
+  },
+  "machinability_modifiers": {
+    "ALUMINUM": 1.0,
+    "STEEL": 1.27,
+    "STAINLESSSTEEL": 1.4,
+    "TITANIUM": 1.6,
+    "INCONEL": 1.8,
+    "COPPER": 1.1,
+    "PLASTIC": 0.9
+  },
+  "rules": {
+    "description": "Rules for the 'Machining from Billet' process",
+    "setup_time_hours": {
+      "simple": 2.0,
+      "medium": 4.0,
+      "high": 8.0
+    },
+    "drilling_time_min": {
+      "small_hole": 0.5,
+      "large_hole": 1.0
+    },
+    "threading_time_min": {
+      "small_thread": 1.0,
+      "large_thread": 1.5
+    },
+    "milling_time_min": {
+      "simple": 10.0,
+      "medium": 45.0,
+      "high": 90.0
+    },
+    "turning_time_min": {
+      "simple": 15.0,
+      "medium": 30.0,
+      "high": 70.0
+    },
+    "non_cutting_times_min": {
+      "tool_change": 1.0,
+      "repositioning": 2.0
+    },
+    "surcharges_percent": {
+      "tight_tolerance": 25.0,
+      "finish_n7": 13.0,
+      "finish_n6_or_better": 20.0
+    }
+  },
+  "radius_surcharge_rules": [
+    { "if_smaller_or_equal_to_mm": 1.0, "add_percent": 45.0 },
+    { "if_smaller_or_equal_to_mm": 2.0, "add_percent": 30.0 }
+  ],
+  "extrusion_profiles": {
+    "HEATSINK_STANDARD": { "cost_per_meter": 25.50 },
+    "L_PROFILE": { "cost_per_meter": 9.50 },
+    "U_CHANNEL": { "cost_per_meter": 14.00 },
+    "T_PROFILE": { "cost_per_meter": 12.00 },
+    "HOLLOW_SQUARE_TUBE": { "cost_per_meter": 19.00 },
+    "SOLID_BAR": { "cost_per_meter": 16.50 },
+    "UNKNOWN_GEOMETRY": { "cost_per_meter": 0 }
+  },
+  "quantity_discount": {
+    "threshold": 100,
+    "percentage": 15.0
+  }
+}
+
+
+#this Data can vary as per your quote
